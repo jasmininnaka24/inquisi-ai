@@ -32,7 +32,7 @@ export default function QuizApp() {
   const fetchQuestion = async (categoryName: string) => {
     setIsLoading(true)
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/category`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export default function QuizApp() {
       setGameState("playing")
     } catch (error) {
       console.error("Error fetching question:", error)
-      alert("Failed to fetch question. Make sure your backend is running on http://localhost:8000")
+      alert(`Failed to fetch question. Make sure your backend is running on ${import.meta.env.VITE_API_BASE_URL}`)
     } finally {
       setIsLoading(false)
     }
